@@ -1,4 +1,5 @@
 import React from "react";
+import NoteItem from "./components/NoteItem";
 
 const App = () => {
   return (
@@ -26,36 +27,10 @@ const App = () => {
       </div>
 
       {/* Note Items */}
-      <div className="bg-white shadow-md rounded p-5">
-        <p className="font-semibold mb-4 text-gray-700 text-lg">
-          Lorem ipsum dolor sit amet.
-        </p>
-        <div className="space-x-4">
-          <button className="bg-blue-500 text-white p-2 rounded">View</button>
-          <button className="bg-gray-700 text-white p-2 rounded">Edit</button>
-          <button className="bg-red-500 text-white p-2 rounded">Delete</button>
-        </div>
-      </div>
-      <div className="bg-white shadow-md rounded p-5">
-        <p className="font-semibold mb-4 text-gray-700 text-lg">
-          Lorem ipsum dolor sit amet.
-        </p>
-        <div className="space-x-4">
-          <button className="bg-blue-500 text-white p-2 rounded">View</button>
-          <button className="bg-gray-700 text-white p-2 rounded">Edit</button>
-          <button className="bg-red-500 text-white p-2 rounded">Delete</button>
-        </div>
-      </div>
-      <div className="bg-white shadow-md rounded p-5">
-        <p className="font-semibold mb-4 text-gray-700 text-lg">
-          Lorem ipsum dolor sit amet.
-        </p>
-        <div className="space-x-4">
-          <button className="bg-blue-500 text-white p-2 rounded">View</button>
-          <button className="bg-gray-700 text-white p-2 rounded">Edit</button>
-          <button className="bg-red-500 text-white p-2 rounded">Delete</button>
-        </div>
-      </div>
+      <NoteItem title="My first re-usable component" />
+      <NoteItem title="Lorem ipsum dolor sit amet consectetur" />
+      <NoteItem title="Hic perferendis at repellendus fuga" />
+      <NoteItem title="In molestiae optio aspernatur repudiandae" />
     </div>
   );
 };
