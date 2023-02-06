@@ -1,4 +1,4 @@
-import React, { useState, ChangeEventHandler } from "react";
+import React, { useState, ChangeEventHandler, useEffect } from "react";
 import NoteItem from "./components/NoteItem";
 import axios from "axios";
 
@@ -7,6 +7,7 @@ const App = () => {
   // const [title, setTitle] = useState("");
   // const [description, setDescription] = useState("");
 
+  const [count, setCount] = useState(0);
   const [notes, setNotes] = useState<
     {
       id: string;
@@ -26,6 +27,11 @@ const App = () => {
     setValues({ ...values, [name]: value });
   };
 
+  useEffect(() => {
+    // call the api and fetch notes
+    console.log("I am running");
+  }, []);
+
   return (
     <div className="max-w-3xl mx-auto space-y-6">
       <form
@@ -43,6 +49,12 @@ const App = () => {
         }}
         className="space-y-6 bg-white shadow-md rounded p-5"
       >
+        <div>
+          <span>{count} </span>
+          <button type="button" onClick={() => setCount(count + 1)}>
+            Click Me
+          </button>
+        </div>
         <h1 className="font-semibold text-2xl text-center">Note Application</h1>
         <div>
           <input
