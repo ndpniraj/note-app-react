@@ -19,6 +19,7 @@ const App = () => {
     title: "",
     description: "",
   });
+  const [selectedNoteId, setSelectedNoteId] = useState("");
 
   const handleChange: ChangeEventHandler<
     HTMLInputElement | HTMLTextAreaElement
@@ -42,6 +43,20 @@ const App = () => {
       <form
         onSubmit={async (evt) => {
           evt.preventDefault();
+          if (selectedNoteId) {
+            // then we want to update
+            const { data } = await axios.patch(
+              "http://localhost:8000/note/" + selectedNoteId,
+              {
+                title: values.title,
+                description: values.description,
+              }
+            );
+
+            console.log(data.note);
+            return;
+          }
+
           const { data } = await axios.post(
             "http://localhost:8000/note/create",
             {
@@ -89,7 +104,19 @@ const App = () => {
 
       {/* Note Items */}
       {notes.map((note) => {
-        return <NoteItem key={note.id} title={note.title} />;
+        return (
+          <NoteItem
+            onEditClick={() => {
+              setSelectedNoteId(note.id);
+              setValues({
+                title: note.title,
+                description: note.description || "",
+              });
+            }}
+            key={note.id}
+            title={note.title}
+          />
+        );
       })}
     </div>
   );
