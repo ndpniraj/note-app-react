@@ -28,8 +28,13 @@ const App = () => {
   };
 
   useEffect(() => {
-    // call the api and fetch notes
-    console.log("I am running");
+    const fetchNotes = async () => {
+      // call the api and fetch notes
+      const { data } = await axios("http://localhost:8000/note");
+      setNotes(data.notes);
+    };
+
+    fetchNotes();
   }, []);
 
   return (
@@ -84,7 +89,7 @@ const App = () => {
 
       {/* Note Items */}
       {notes.map((note) => {
-        return <NoteItem key={note.title} title={note.title} />;
+        return <NoteItem key={note.id} title={note.title} />;
       })}
     </div>
   );
