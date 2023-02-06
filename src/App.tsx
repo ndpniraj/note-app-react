@@ -21,7 +21,7 @@ const App = () => {
 
   return (
     <div className="max-w-3xl mx-auto space-y-6">
-      <div
+      <form
         onSubmit={async (evt) => {
           evt.preventDefault();
           const { data } = await axios.post(
@@ -60,7 +60,7 @@ const App = () => {
             Submit
           </button>
         </div>
-      </div>
+      </form>
 
       {/* Note Items */}
       <NoteItem title="My first re-usable component" />
