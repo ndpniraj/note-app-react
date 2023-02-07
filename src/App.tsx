@@ -112,6 +112,7 @@ const App = () => {
       </form>
 
       {/* Note Items */}
+
       {notes.map((note) => {
         return (
           <NoteItem
@@ -121,6 +122,20 @@ const App = () => {
                 title: note.title,
                 description: note.description || "",
               });
+            }}
+            onDeleteClick={async () => {
+              const result = confirm("Are you sure?");
+              if (result) {
+                // delete
+                await axios.delete("http://localhost:8000/note/" + note.id);
+
+                // const updatedNotes = notes.filter(({ id }) => {
+                //   if (id !== note.id) return note;
+                // });
+                const updatedNotes = notes.filter(({ id }) => id !== note.id);
+
+                setNotes([...updatedNotes]);
+              }
             }}
             key={note.id}
             title={note.title}
