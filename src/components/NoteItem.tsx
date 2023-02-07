@@ -21,7 +21,11 @@ const NoteItem: FC<Props> = ({
       <p className="font-semibold mb-4 text-gray-700 text-lg">{title}</p>
       {description ? <p className="ml-2 py-2 text-lg">{description}</p> : null}
       <div className="space-x-4">
-        <AppButton title="View" type="regular" onClick={onViewClick} />
+        <AppButton
+          title={description ? "Hide" : "View"}
+          type="regular"
+          onClick={onViewClick}
+        />
         <AppButton onClick={onEditClick} title="Edit" type="normal" />
         <AppButton title="Delete" type="danger" onClick={onDeleteClick} />
       </div>

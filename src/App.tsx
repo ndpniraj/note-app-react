@@ -118,7 +118,11 @@ const App = () => {
         return (
           <NoteItem
             onViewClick={() => {
-              setNoteToView(note);
+              if (noteToView) {
+                setNoteToView(undefined);
+              } else {
+                setNoteToView(note);
+              }
             }}
             description={
               noteToView?.id === note.id ? noteToView?.description : ""
